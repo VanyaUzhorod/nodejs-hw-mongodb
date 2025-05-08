@@ -1,34 +1,4 @@
-// import { model, Schema } from 'mongoose';
-
-// const contactSchema = new Schema(
-//   {
-//     name: {
-//       type: String,
-//       required: true,
-//     },
-//     phoneNumber: {
-//       type: String,
-//       required: true,
-//     },
-//     email: {
-//       type: String,
-//     },
-//     isFavourite: {
-//       type: Boolean,
-//       default: false,
-//     },
-//     contactType: {
-//       type: String,
-//       enum: ['work', 'home', 'personal'],
-//       required: true,
-//       default: 'personal',
-//     },
-//   },
-//   { timestamps: true },
-// );
-
-// export const ContactsCollection = model('contact', contactSchema);
-
+import { typeList } from '../../constants/index.js';
 import { model, Schema } from 'mongoose';
 
 const contactSchema = new Schema(
@@ -36,10 +6,14 @@ const contactSchema = new Schema(
     name: {
       type: String,
       required: true,
+      minlength: 3,
+      maxlength: 20,
     },
     phoneNumber: {
       type: String,
       required: true,
+      minlength: 3,
+      maxlength: 20,
     },
     email: {
       type: String,
@@ -47,20 +21,26 @@ const contactSchema = new Schema(
     isFavourite: {
       type: Boolean,
       default: false,
+      required: true,
     },
     contactType: {
       type: String,
-      enum: ['work', 'home', 'personal'],
+      enum: typeList,
       required: true,
-      default: 'personal',
+      default: typeList[0],
     },
     userId: {
       type: Schema.Types.ObjectId,
-      ref: 'user',
+      ref: 'users',
       required: true,
     },
+    photo: {
+      type: String,
+      required: false,
+      default: null,
+    },
   },
-  { timestamps: true, versionKey: false },
+  { versionKey: false, timestamps: true },
 );
 
 export const ContactsCollection = model('contact', contactSchema);
