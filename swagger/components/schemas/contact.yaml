@@ -5,6 +5,8 @@ required:
   - phoneNumber
   - contactType
   - userId
+  - createdAt
+  - updatedAt
 properties:
   _id:
     description: "Contact's id"
@@ -13,17 +15,17 @@ properties:
   name:
     description: "Contact's name"
     type: string
-    example: 'John Doe'
+    example: 'John Alpha'
   phoneNumber:
     description: "Contact's phone number"
     type: string
-    example: +380123456789
+    example: '+380997990557'
   email:
     description: "Contact's email"
     type: string
-    example: 'john.doe@example.com'
-  isFavorite:
-    description: 'Whether is contact favorite'
+    example: 'johnAlpha  @gmail.com'
+  isFavourite:
+    description: "Contact's is favourite"
     type: boolean
     example: false
   contactType:
@@ -31,10 +33,20 @@ properties:
     type: string
     enum: ['work', 'home', 'personal']
   userId:
-    description: "User's id"
+    description: "Contact's owner id"
     type: string
     example: 65e4decdd286b30065d54af9
+  createdAt:
+    description: "Contact's data create"
+    type: string
+    format: date-time
+    example: '2025-06-20T19:42:55.327Z'
+  updatedAt:
+    description: "Contact's data update"
+    type: string
+    format: date-time
+    example: '2025-06-20T19:42:55.566Z'
   photo:
-    description: "Link to contact's photo"
+    description: "Link to user's photo"
     type: string
     example: https://res.cloudinary.com/uqwgdu/image/upload/image.png

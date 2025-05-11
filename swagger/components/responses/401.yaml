@@ -1,4 +1,4 @@
-description: Access token expired
+description: Unauthorized error
 content:
   application/json:
     schema:
